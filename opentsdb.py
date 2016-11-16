@@ -1,23 +1,10 @@
-#!/usr/bin/env python26
 import time
 import socket
 import json
 import requests
-import types
 
 # DEFAULT OPTIONS
 TIMEOUT = 5
-URL = "http://timeseries.macs.intranet/api/put"
-KSID = "ts_e4ad726b_55ea_4f12_9408_eddcbe68006b"
-SKEL = {
-    "metric": '',
-    "timestamp": '',
-    "value": '',
-    "tags": {
-        "ksid": KSID,
-        "host": socket.gethostname(),
-        },
-    }
 
 class OpenTSDB(object):
 
@@ -52,6 +39,7 @@ class OpenTSDB(object):
             return
         point.timestamp = get_timestamp()
         point.value = assert_digit(point.value)
+        point.tags['ksid'] = self.ksid
         self._payload.append(point.transform())
 
 
@@ -91,3 +79,12 @@ def assert_digit(value):
 
 def get_timestamp():
     return int(round(time.time() * 1000))
+
+SKEL = {
+    "metric": '',
+    "timestamp": '',
+    "value": '',
+    "tags": {
+        "host": socket.gethostname(),
+        },
+    }

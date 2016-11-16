@@ -49,3 +49,26 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> opentsdb.send()
 Sending: {'timestamp': 1479293551456, 'metric': 'ps.test', 'value': 13.0, 'tags': {'host': 'centos7', 'ksid': 'foobarksid'}}
 ```
+
+If you choose to send multiple points at the same time you can either use a bigger payload using TCP or multiple sockets using UDP. Again, the module will take care of this step for you:
+
+```
+>>> point.value = 13
+>>> opentsdb.add(point)
+>>> point.value = 15
+>>> opentsdb.add(point)
+>>> point.value = 18
+>>> opentsdb.add(point)
+>>>
+>>> opentsdb.send() # TCP (Single payload via POST)
+Sending: [{"timestamp": 1479294132374, "metric": "ps.test", "value": 18.0, "tags": {"host": "centos7", "ksid": "foobarksid"}}, {"timestamp": 1479294132374, "metric": "ps.test", "value": 18.0, "tags": {"host": "centos7", "ksid": "foobarksid"}}, {"timestamp": 1479294132374, "metric": "ps.test", "value": 18.0, "tags": {"host": "centos7", "ksid": "foobarksid"}}]
+>>> opentsdb.send() # UDP (Multiple UDP sockets)
+Sending: {'timestamp': 1479294014351, 'metric': 'ps.test', 'value': 18.0, 'tags': {'host': 'centos7', 'ksid': 'foobarksid'}}
+Sending: {'timestamp': 1479294014351, 'metric': 'ps.test', 'value': 18.0, 'tags': {'host': 'centos7', 'ksid': 'foobarksid'}}
+Sending: {'timestamp': 1479294014351, 'metric': 'ps.test', 'value': 18.0, 'tags': {'host': 'centos7', 'ksid': 'foobarksid'}}
+```
+
+## Author
+
+Marcelo Varge
+marcelo.varge@gmail.com
