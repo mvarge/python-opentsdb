@@ -71,4 +71,4 @@ Sending: {'timestamp': 1479294014351, 'metric': 'ps.test', 'value': 18.0, 'tags'
 ## Author
 
 Marcelo Varge
-marcelo.varge@gmail.com
+(marcelo.varge@gmail.com)
