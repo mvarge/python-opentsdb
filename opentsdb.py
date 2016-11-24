@@ -2,6 +2,7 @@ import time
 import socket
 import json
 import requests
+from copy import deepcopy
 
 # DEFAULT OPTIONS
 TIMEOUT = 5
@@ -38,7 +39,7 @@ class OpenTSDB(object):
         point.timestamp = get_timestamp()
         point.value = assert_digit(point.value)
         point.tags['ksid'] = self.ksid
-        self._payload.append(dict(point.transform()))
+        self._payload.append(deepcopy(point.transform()))
 
 
 class Point(object):

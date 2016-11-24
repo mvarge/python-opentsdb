@@ -30,7 +30,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> point.tags['foo'] = 'other_bar'
 >>> opentsdb.add(point)
 >>> opentsdb.send()
-Sending: [{"timestamp": 1480018782695, "metric": "ps.test", "value": 20.0, "tags": {"host": "centos7", "foo": "other_bar", "ksid": "ts_e4ad726b_55ea_4f12_9408_eddcbe68006b"}}, {"timestamp": 1480018794486, "metric": "ps.test", "value": 13.0, "tags": {"host": "centos7", "foo": "other_bar", "ksid": "ts_e4ad726b_55ea_4f12_9408_eddcbe68006b"}}]
+Sending: [{"timestamp": 1480019247540, "metric": "ps.test", "value": 20.0, "tags": {"host": "centos7", "foo": "bar", "ksid": "ts_e4ad726b_55ea_4f12_9408_eddcbe68006b"}}, {"timestamp": 1480019253410, "metric": "ps.test", "value": 13.0, "tags": {"host": "centos7", "foo": "other_bar", "ksid": "ts_e4ad726b_55ea_4f12_9408_eddcbe68006b"}}]
 ```
 
 If you want to use UDP instead TCP the only difference applies during the OpenTSDB object initialization:
