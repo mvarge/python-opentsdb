@@ -18,12 +18,10 @@ class OpenTSDB(object):
         for attr, value in kwargs.items():
             setattr(self, attr, value)
         if hasattr(self, 'url'):
-            self._type = 'tcp'
             self._session = requests.Session()
             self._session.headers = {"Content-Type": "application/json"}
             setattr(self.__class__, 'send', tcp)
         if hasattr(self, 'ip'):
-            self._type = 'udp'
             socket.setdefaulttimeout(TIMEOUT)
             self._sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
             setattr(self.__class__, 'send', udp)
@@ -40,7 +38,7 @@ class OpenTSDB(object):
         point.timestamp = get_timestamp()
         point.value = assert_digit(point.value)
         point.tags['ksid'] = self.ksid
-        self._payload.append(point.transform())
+        self._payload.append(dict(point.transform()))
 
 
 class Point(object):

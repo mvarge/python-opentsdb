@@ -30,7 +30,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> point.tags['foo'] = 'other_bar'
 >>> opentsdb.add(point)
 >>> opentsdb.send()
-Sending: [{"timestamp": 1479293415774, "metric": "ps.test", "value": 13.0, "tags": {"host": "centos7", "foo": "other_bar", "ksid": "foobarksid"}}, {"timestamp": 1479293415774, "metric": "ps.test", "value": 13.0, "tags": {"host": "centos7", "foo": "other_bar", "ksid": "foobarksid"}}]
+Sending: [{"timestamp": 1480018782695, "metric": "ps.test", "value": 20.0, "tags": {"host": "centos7", "foo": "other_bar", "ksid": "ts_e4ad726b_55ea_4f12_9408_eddcbe68006b"}}, {"timestamp": 1480018794486, "metric": "ps.test", "value": 13.0, "tags": {"host": "centos7", "foo": "other_bar", "ksid": "ts_e4ad726b_55ea_4f12_9408_eddcbe68006b"}}]
 ```
 
 If you want to use UDP instead TCP the only difference applies during the OpenTSDB object initialization:
@@ -61,10 +61,10 @@ If you choose to send multiple points at the same time you can either use a bigg
 >>> opentsdb.add(point)
 >>>
 >>> opentsdb.send() # TCP (Single payload via POST)
-Sending: [{"timestamp": 1479294132374, "metric": "ps.test", "value": 18.0, "tags": {"host": "centos7", "ksid": "foobarksid"}}, {"timestamp": 1479294132374, "metric": "ps.test", "value": 18.0, "tags": {"host": "centos7", "ksid": "foobarksid"}}, {"timestamp": 1479294132374, "metric": "ps.test", "value": 18.0, "tags": {"host": "centos7", "ksid": "foobarksid"}}]
+Sending: [{"timestamp": 1479294132374, "metric": "ps.test", "value": 13.0, "tags": {"host": "centos7", "ksid": "foobarksid"}}, {"timestamp": 1479294132374, "metric": "ps.test", "value": 15.0, "tags": {"host": "centos7", "ksid": "foobarksid"}}, {"timestamp": 1479294132374, "metric": "ps.test", "value": 18.0, "tags": {"host": "centos7", "ksid": "foobarksid"}}]
 >>> opentsdb.send() # UDP (Multiple UDP sockets)
-Sending: {'timestamp': 1479294014351, 'metric': 'ps.test', 'value': 18.0, 'tags': {'host': 'centos7', 'ksid': 'foobarksid'}}
-Sending: {'timestamp': 1479294014351, 'metric': 'ps.test', 'value': 18.0, 'tags': {'host': 'centos7', 'ksid': 'foobarksid'}}
+Sending: {'timestamp': 1479294014351, 'metric': 'ps.test', 'value': 13.0, 'tags': {'host': 'centos7', 'ksid': 'foobarksid'}}
+Sending: {'timestamp': 1479294014351, 'metric': 'ps.test', 'value': 15.0, 'tags': {'host': 'centos7', 'ksid': 'foobarksid'}}
 Sending: {'timestamp': 1479294014351, 'metric': 'ps.test', 'value': 18.0, 'tags': {'host': 'centos7', 'ksid': 'foobarksid'}}
 ```
 
